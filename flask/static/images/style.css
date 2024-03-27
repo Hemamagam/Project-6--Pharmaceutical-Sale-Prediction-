@@ -1,0 +1,71 @@
+body, h1, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply default font family and color */
+body {
+    font-family: Arial, sans-serif;
+    color: #d71313; /* Default text color */
+    background-color: #f4f4f4; /* Default background color */
+}
+
+
+
+/* Center the form vertically */
+.container {
+    text-align: center;
+    margin-top: 50px; /* Add margin to center the form vertically */
+}
+
+h1 {
+    font-size: 2.25em; /* Set font size for h1 */
+    color: rgba(250, 235, 215, 0.797); /* Set font color for h1 */
+    margin-bottom: 20px;
+}
+
+/* Style input labels */
+label {
+    color: #f9f9f9d7; /* Change color to blue (or any other color) */
+    display: block; /* Make each label appear on its own line */
+    margin-bottom: 10px; /* Add some spacing between labels */
+}
+
+/* Style input fields */
+input[type="number"] {
+    width: 10%;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Style submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffffcb;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style prediction text */
+.prediction {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Set font color for prediction text */
+}
+
+element.style {
+    color: antiquewhite
+}
+user agent stylesheet
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
