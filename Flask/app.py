@@ -13,19 +13,31 @@ with open('random_forest_model.pkl', 'rb') as f:
 def predict():
     if request.method == 'POST':
         # Get input parameters from the form
-        input_data = {
-            'Store': int(request.form['Store']),
-            'Customers': int(request.form['Customers']),
-            'Open': int(request.form['Open']),
-            'Promo': int(request.form['Promo']),
-            'Holiday': int(request.form['Holiday']),
-            'DayOfMonth': int(request.form['DayOfMonth']),
-            'Month': int(request.form['Month']),
-            'Year': int(request.form['Year']),
-            'IsWeekend': int(request.form['IsWeekend'])
-        }
+        store_id = int(request.form['Store_id'])
+        date = request.form['Date']
+        is_holiday = int(request.form['IsHoliday'])
+        is_weekend = int(request.form['IsWeekend'])
+        is_promo = int(request.form['IsPromo'])
+        # Other parameters dependent on date
+        # e.g., extract day, month, year from date
+        # Example: (assuming date is in format 'YYYY-MM-DD')
+        day = int(date.split('-')[2])
+        month = int(date.split('-')[1])
+        year = int(date.split('-')[0])
 
         # Prepare input data for prediction
+        input_data = {
+            'Store': store_id,
+            'Customers': 0,  # Default value for Customers
+            'Open': 1,  # Default value for Open
+            'DayOfMonth': day,
+            'Month': month,
+            'Year': year,
+            'Holiday': is_holiday,
+            'IsWeekend': is_weekend,
+            'Promo': is_promo
+            # Add other parameters extracted from form if needed
+        }
         input_df = pd.DataFrame(input_data, index=[0])
 
         # Make prediction
@@ -38,4 +50,4 @@ def predict():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)  
+    app.run(debug=True)
