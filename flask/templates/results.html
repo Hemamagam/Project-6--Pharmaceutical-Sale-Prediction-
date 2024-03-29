@@ -4,14 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Set the background image */
+        body {
+            background-image: url('/static/images/background.jpg');
+            /* Adjust background properties */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Add more styles as needed */
+            color: #0f0e0fde; /* Default text color */
+            text-align: center; /* Align text to center */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #290456d7; /* Color for heading */
+        }
+        .prediction {
+            font-size: 24px;
+            font-weight: bold;
+            color: #058b19f1; /* Color for prediction text */
+        }
+
+        /* Additional styles */
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <h1>Prediction Results</h1>
-    <div class="prediction-info">
-        <p>Predicted Sales: {{ prediction }}</p>
-        <!-- Add more information here if needed -->
+    <div class="container">
+        <!-- Your dashboard content goes here -->
+        <h1>Rossman Sales Prediction Dashboard</h1>
+        <!-- Include your form, tables, or other content -->
+    
+        <div class="container">
+            <h1>Prediction Results</h1>
+            <p class="prediction">Predicted Sales Amount: {{ sales_prediction }}</p>
+            <p class="prediction">Predicted Customer Numbers: {{ customers_prediction }}</p>
+            <!-- Add download button/link -->
+            <h2>Download Prediction Data:</h2>
+            
+            <a href="/download" class="download-link">Download CSV</a>
+        </div>     
     </div>
-    <!-- Add more sections or elements as needed -->
 </body>
 </html>
