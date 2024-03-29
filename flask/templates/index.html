@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction</title>
+    <!-- You may include any necessary stylesheets or scripts here -->
+</head>
+<body>
+    <h1>Sales Prediction</h1>
+    <form action="/" method="post">
+        <label for="Store_id">Store ID:</label>
+        <input type="number" name="Store_id" id="Store_id" required>
+        <label for="Date">Date:</label>
+        <input type="date" name="Date" id="Date" required>
+        <label for="Customers">Number of Customers:</label>
+        <input type="number" name="Customers" id="Customers" required>
+        <label for="Open">Store Open:</label>
+        <select name="Open" id="Open" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="DayOfMonth">Day of Month:</label>
+        <input type="number" name="DayOfMonth" id="DayOfMonth" required>
+        <label for="Month">Month:</label>
+        <input type="number" name="Month" id="Month" required>
+        <label for="Year">Year:</label>
+        <input type="number" name="Year" id="Year" required>
+        <label for="IsHoliday">Is Holiday:</label>
+        <select name="IsHoliday" id="IsHoliday" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <label for="IsWeekend">Is Weekend:</label>
+        <select name="IsWeekend" id="IsWeekend" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <label for="IsPromo">Is Promo:</label>
+        <select name="IsPromo" id="IsPromo" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
