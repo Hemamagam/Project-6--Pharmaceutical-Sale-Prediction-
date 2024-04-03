@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction Results</title>
+</head>
+<body>
+    <h1>Sales Prediction Results</h1>
+    <h2>Predicted Sales for Next 6 Weeks</h2>
+    <table border="1">
+        <tr>
+            <th>Week</th>
+            <th>Predicted Sales</th>
+            <th>Predicted Customers</th>
+        </tr>
+        {% for week, (sales, customers) in enumerate(zip(predicted_sales, predicted_customers), 1) %}
+        <tr>
+            <td>Week {{ week }}</td>
+            <td>{{ sales }}</td>
+            <td>{{ customers }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Back to input</a>
+</body>
+</html>
