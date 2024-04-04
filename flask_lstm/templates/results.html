@@ -67,16 +67,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Sales Prediction Results</h1>
-        <h2>Sales Prediction</h2>
-        <p><strong>Sales Prediction:</strong> {{ sales_prediction }}</p>
-        <h1>Customer Prediction Results</h1>
-        <h2>Customer Prediction</h2>
-        <p><strong>Customer Prediction:</strong> {{ customers_prediction }}</p>
+        <h1>Sales and Customers Prediction Results</h1>
+    
+        <h2>Sales Prediction: {{ sales_prediction }}</h2>
+        <h2>Customers Prediction: {{ customers_prediction }}</h2>
+    
+        <h2>Sales vs Customers Prediction Plot</h2>
+        {% if plot_data %}
+        <img src="data:image/png;base64,{{ plot_data }}" alt="Sales vs Customers Prediction">
+        {% else %}
+        <p>No data available to generate plot.</p>
+        {% endif %}
         <h2>Forecast Plot</h2>
         <img src="/static/images/forecast.png" alt="Forecast Plot">
-        <h2>Sales and Customer Prediction Chart</h2>
-        <img src="/static/plot.png" alt="Sales and Customer Prediction Chart" style="max-width: 100%;">
         <h2>Predictions CSV</h2>
         <table>
             <thead>
