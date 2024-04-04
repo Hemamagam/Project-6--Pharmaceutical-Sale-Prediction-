@@ -3,25 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Prediction Results</title>
+    <title> Sales Prediction Results</title>
+    <style>
+        body {
+            background-image: url("/static/images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sales Prediction Results</h1>
-    <h2>Predicted Sales for Next 6 Weeks</h2>
-    <table border="1">
-        <tr>
-            <th>Week</th>
-            <th>Predicted Sales</th>
-            <th>Predicted Customers</th>
-        </tr>
-        {% for week, (sales, customers) in enumerate(zip(predicted_sales, predicted_customers), 1) %}
-        <tr>
-            <td>Week {{ week }}</td>
-            <td>{{ sales }}</td>
-            <td>{{ customers }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('index') }}">Back to input</a>
+    <div class="container">
+        <h1>Sales Prediction Results</h1>
+        <h2>Sales Prediction</h2>
+        <p><strong>Sales Prediction:</strong> {{ sales_prediction }}</p>
+        <h1>Customer Prediction Results</h1>
+        <h2>Customer Prediction</h2>
+        <p><strong>Customer Prediction:</strong> {{ customers_prediction }}</p>
+        <h2>Forecast Plot</h2>
+        <img src="/static/images/forecast.png" alt="Forecast Plot">
+        <h2>Sales and Customer Prediction Chart</h2>
+        <img src="/static/plot.png" alt="Sales and Customer Prediction Chart" style="max-width: 100%;">
+        <h2>Predictions CSV</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sales Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in prediction_csv.iterrows() %}
+                <tr>
+                    <td>{{ row['Sales_Prediction'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Download <a href="{{ url_for('static', filename='predictions.csv') }}" download>predictions.csv</a></strong></p>
+    </div>
 </body>
 </html>
