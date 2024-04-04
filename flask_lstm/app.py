@@ -4,7 +4,11 @@ import numpy as np
 import pickle
 import mlflow
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import io
+import base64
 
 app = Flask(__name__)
 
@@ -88,6 +92,24 @@ def predict():
             'Customers_Prediction': customers_prediction.flatten(), 
         })
 
+        # Generate plot for sales vs customers
+        plot_data = None
+        if len(prediction_df) > 0:
+            plt.figure(figsize=(5, 3))
+            plt.scatter(prediction_df['Sales_Prediction'], prediction_df['Customers_Prediction'])
+            plt.title('Sales vs Customers Prediction')
+            plt.xlabel('Sales Prediction')
+            plt.ylabel('Customers Prediction')
+            plt.grid(True)
+            plt.tight_layout()
+
+            # Save plot to a bytes object
+            buffer = io.BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plot_data = base64.b64encode(buffer.getvalue()).decode()
+            plt.close()  # Close the figure to release resources
+
         # Save predictions to CSV
         csv_path = 'static/predictions.csv'
         prediction_df.to_csv(csv_path, index=False)
@@ -99,8 +121,9 @@ def predict():
                                sales_prediction=sales_prediction[0],
                                customers_prediction=customers_prediction[0],  
                                forecast_plot=forecast_path, 
-                               prediction_csv=prediction_df)
-
+                               prediction_csv=prediction_df,
+                               plot_data = plot_data)
+                            
 if __name__ == "__main__":
     if not os.path.exists('static'):
         os.makedirs('static')
