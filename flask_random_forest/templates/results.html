@@ -3,55 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction Results</title>
+    <title> Prediction Results</title>
     <style>
-        /* Set the background image */
         body {
-            background-image: url('/static/images/background.jpg');
-            /* Adjust background properties */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            /* Add more styles as needed */
-            color: #0f0e0fde; /* Default text color */
-            text-align: center; /* Align text to center */
+            background-image: url("static/images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
         }
-
         .container {
-            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            margin-bottom: 20px;
-            color: #290456d7; /* Color for heading */
+            text-align: center;
         }
-        .prediction {
-            font-size: 24px;
+        label {
             font-weight: bold;
-            color: #058b19f1; /* Color for prediction text */
         }
-
-        /* Additional styles */
-        body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Your dashboard content goes here -->
-        <h1>Rossman Sales Prediction Dashboard</h1>
-        <!-- Include your form, tables, or other content -->
-    
-        <div class="container">
-            <h1>Prediction Results</h1>
-            <p class="prediction">Predicted Sales Amount: {{ sales_prediction }}</p>
-            <p class="prediction">Predicted Customer Numbers: {{ customers_prediction }}</p>
-            <!-- Add download button/link -->
-            <h2>Download Prediction Data:</h2>
-            
-            <a href="/download" class="download-link">Download CSV</a>
-        </div>     
+        <h1>Sales Prediction Results</h1>
+        <h2>Sales Prediction</h2>
+        <p><strong>Sales Prediction:</strong> {{ sales_prediction }}</p>
+        <h1>Customer Prediction Results</h1>
+        <h2>Customer Prediction</h2>
+        <p><strong>Customer Prediction:</strong> {{ customers_prediction }}</p>
+        <h2>Forecast Plot</h2>
+        {% if forecast_plot %}
+        <img src="{{ forecast_plot }}" alt="Forecast Plot" style="max-width: 100%;">
+        {% else %}
+        <p>No forecast plot available</p>
+        {% endif %}
+        <h2>Predictions CSV</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sales Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in prediction_csv.iterrows() %}
+                <tr>
+                    <td>{{ row['Sales_Prediction'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Download <a href="{{ prediction_csv }}" download>predictions.csv</a></strong></p>
     </div>
 </body>
 </html>
