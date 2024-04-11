@@ -89,7 +89,7 @@ Serializing the models with timestamps for daily predictions.
 
 Additionally, employing deep learning techniques, specifically Long Short-Term Memory (LSTM) networks, to predict future sales.
 
-# Task 3: Deep Learning Model for Sales Prediction
+# Deep Learning Model for Sales Prediction
 
 This task involves building a LSTM regression model to predict future sales using time series data. The steps include:
 
@@ -102,6 +102,11 @@ Analyzing autocorrelation and partial autocorrelation.
 Converting the time series data into supervised learning data.
 
 Scaling the data and building the LSTM regression model.
+
+# Task 3: Serving Predictions on a Web Interface
+
+In this task, we implemented a Flask backend to serve predictions using our trained models and input parameters collected through a frontend interface. The objective is to provide an intuitive dashboard for store managers to input required parameters and receive predictions for sales amount and customer numbers.
+
 
 
 
