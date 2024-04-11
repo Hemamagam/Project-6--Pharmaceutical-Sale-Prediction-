@@ -10,7 +10,7 @@ Key Features: Leveraging machine learning techniques, incorporating factors such
 
 seasonality, and locality.
 
-Goal: Accurately predict sales across all stores, six weeks in advance, to support informed decision-making by the finance team.
+Accurately predict sales across all stores, six weeks in advance, to support informed decision-making by the finance team.
 
 # Introduction to the Rossmann Pharmaceuticals
 Rossmann Pharmaceuticals: A Leading Name in Pharmaceutical Retail
@@ -87,7 +87,7 @@ Conducting post-prediction analysis to explore feature importance and estimate c
 
 Serializing the models with timestamps for daily predictions.
 
-Additionally, employing deep learning techniques, specifically Long Short-Term Memory (LSTM) networks, to predict future sales.
+Employing deep learning techniques, specifically ARIMA, SARIMA, PROPHET, LSTM networks, to predict future sales.
 
 # Deep Learning Model for Sales Prediction
 
