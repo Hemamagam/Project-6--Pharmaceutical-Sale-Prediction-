@@ -107,6 +107,8 @@ Scaling the data and building the LSTM regression model.
 
 In this task, we implemented a Flask backend to serve predictions using our trained models and input parameters collected through a frontend interface. The objective is to provide an intuitive dashboard for store managers to input required parameters and receive predictions for sales amount and customer numbers.
 
+# Rossmann Sales Prediction PPT
+
 
 
 
