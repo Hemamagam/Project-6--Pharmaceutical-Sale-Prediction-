@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction Results</title>
+    <style>
+        body {
+            background-image: url("/static/images/background.jpg");
+            background-position: center;
+            background-size: 1200px 800px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+             color: darkblue;
+        }
+        label {
+            font-weight: bold;
+            color: aqua;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: darkblue;
+        }
+        input[type="checkbox"] {
+            margin-bottom: 10px;
+            color: darkblue;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: darkblue;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            color: darkblue;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            color: darkblue;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: darkblue;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Forecast Results</h1>
+    
+    {% if plot_data %}
+    <img src="data:image/png;base64,{{ plot_data }}" alt="Sales and Customers Forecast">
+    {% endif %}
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Sales Prediction</th>
+                <th>Customers Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in prediction_csv.iterrows() %}
+            <tr>
+                <td>{{ row['Date'] }}</td>
+                <td>{{ row['Sales_Prediction'] }}</td>
+                <td>{{ row['Customers_Prediction'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
