@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction</title>
+    <style>
+        body {
+            background-image: url("static/images/background.jpg");
+            background-position: center;
+            background-size: 1200px 800px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="Store">Store:</label>
+            <input type="number" id="Store" name="Store" required><br>
+       
+            <label for="Open">Open:</label>
+            <input type="checkbox" id="Open" name="Open" value="1"><br>
+        
+            <label for="Promo">Promo:</label>
+            <select id="Promo" name="Promo" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+            
+            <label for="Holiday">Holiday:</label>
+            <select id="Holiday" name="Holiday" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+            
+            <label for="DayOfMonth">Day of Month:</label>
+            <input type="number" id="DayOfMonth" name="DayOfMonth" required><br>
+        
+            <label for="Month">Month:</label>
+            <input type="number" id="Month" name="Month" required><br>
+        
+            <label for="Year">Year:</label>
+            <input type="number" id="Year" name="Year" required><br>
+        
+            <label for="IsWeekend">Is Weekend:</label>
+            <select id="IsWeekend" name="IsWeekend" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+            
+            <label for="StateHoliday">State Holiday:</label>
+            <select id="StateHoliday" name="StateHoliday" required>
+                <option value="0">None</option>
+                <option value="1">Public Holiday</option>
+                <option value="2">Easter Holiday</option>
+                <option value="3">Christmas Holiday</option>
+            </select><br>
+            
+            <label for="SchoolHoliday">School Holiday:</label>
+            <select id="SchoolHoliday" name="SchoolHoliday" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+            
+            <label for="DayBeforeHoliday">Day Before Holiday:</label>
+            <select id="DayBeforeHoliday" name="DayBeforeHoliday" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+            
+            <label for="DayAfterHoliday">Day After Holiday:</label>
+            <select id="DayAfterHoliday" name="DayAfterHoliday" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+        
+            <input type="submit" value="Forecast">
+        
+        </form>
+    </div>    
+</body>
+</html>
